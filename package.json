@@ -30,7 +30,6 @@
     "@types/node": "^6.0.45",
     "chai": "^3.5.0",
     "es6-promise": "^4.0.5",
-    "fetch-mock": "^5.5.0",
     "graphql": "^0.7.2",
     "graphql-tag": "^0.1.14",
     "lodash": "^4.16.4",

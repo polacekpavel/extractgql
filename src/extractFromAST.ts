@@ -41,6 +41,14 @@ export function isQueryDefinition(defn: Definition): defn is OperationDefinition
   return (isOperationDefinition(defn) && defn.operation === 'query');
 }
 
+export function isMutationDefinition(defn: Definition): defn is OperationDefinition {
+  return (isOperationDefinition(defn) && defn.operation === 'mutation');
+}
+
+export function isSubscriptionDefinition(defn: Definition): defn is OperationDefinition {
+  return (isOperationDefinition(defn) && defn.operation === 'subscription');
+}
+
 // Creates a query document out of a single query operation definition.
 export function createDocumentFromQuery(definition: OperationDefinition) {
   return {
@@ -54,6 +62,12 @@ export function getQueryDefinitions(doc: Document): OperationDefinition[] {
   const queryDefinitions: OperationDefinition[] = [];
   doc.definitions.forEach((definition) => {
     if (isQueryDefinition(definition)) {
+      queryDefinitions.push(definition);
+    }
+    if (isSubscriptionDefinition(definition)) {
+      queryDefinitions.push(definition);
+    }
+    if (isMutationDefinition(definition)) {
       queryDefinitions.push(definition);
     }
   });
